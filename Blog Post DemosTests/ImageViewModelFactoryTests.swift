@@ -9,6 +9,15 @@
 import XCTest
 @testable import Blog_Post_Demos
 
+/**
+ This pair of test and assertion are demoed in "Custom assertions in Swift",
+ which can be found [here](https://medium.com/@amlcurran/custom-assertions-in-swift-3b91b413665e).
+
+ Don't worry, the test should fail!
+
+ Try changing the default value of the line parameter in assertFirstSource(...) to a number, and
+ see how it changes where the assertion failure is reported.
+ */
 class ImageViewModelFactoryTests: XCTestCase {
     
     func testViewModelWhenAnImageHasUrlAndNoImageItReturnsANetworkImageSourceWithTheSameUrl() {
@@ -21,7 +30,7 @@ class ImageViewModelFactoryTests: XCTestCase {
         assertFirstSource(of: viewModel.imageSources, isNetworkWithURL: expectedURL)
     }
 
-    func assertFirstSource(of imageSources: [ImageSource], isNetworkWithURL expectedURL: URL, file: StaticString = #file, line: UInt = #line) {
+    func assertFirstSource(of imageSources: [ImageSource], isNetworkWithURL expectedURL: URL, file: StaticString = #file, line: UInt = 22) {
         if let imageSource = imageSources.first {
             if let networkImageSource = imageSource as? NetworkImageSource {
                 XCTAssertEqual(networkImageSource.url, expectedURL, file: file, line: line)
